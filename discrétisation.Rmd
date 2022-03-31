@@ -1,0 +1,23 @@
+---
+title: "discrétisation"
+author: "momo"
+date: "3/31/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(sf)
+st_layers("documents/vote.gpkg","jointure")
+documents<-st_read("documents/vote.gpkg")
+str(documents)
+```
+#discrétisation: étudier sa distribution
+```{r}
+summary(documents$txVotants)
+hist(documents$txVotants,breaks = c(0,5,10,20,40,200,300))
+```
+
